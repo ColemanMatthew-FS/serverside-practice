@@ -1,0 +1,29 @@
+{
+  "name": "serverside-practice",
+  "version": "1.0.0",
+  "description": "Web dev practice",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ColemanMatthew-FS/serverside-practice.git"
+  },
+  "keywords": [
+    "NPM",
+    "Node",
+    "Express",
+    "JS",
+    "Frontend"
+  ],
+  "author": "Matthew Coleman",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/ColemanMatthew-FS/serverside-practice/issues"
+  },
+  "homepage": "https://github.com/ColemanMatthew-FS/serverside-practice#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
