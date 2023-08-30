@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+//method that defines and exports the quiz model
 module.exports = (sequelize, DataTypes) => {
   class Quiz extends Model {
     /**
