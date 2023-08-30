@@ -2,49 +2,49 @@
 
 const express = require("express")
 const router = express.Router()
-//calls our quiz model
+//calls our quiz model, the models/index.js file created by sequelize automatically exports my models
 const { Quiz } = require('../models')
 const bodyParser = require('body-parser')
 router.use(bodyParser.urlencoded({extended: false}))
 
 //returns all quizzes
 router.get('/', async (req, res) => {
-    const quizzes = await Quiz.findAll()
-    res.json(quizzes)
-})
-
-//adds a quiz
-router.post('/', req, res => {
-    const {id, name} = req.body
-    quizzes.push({
-        id: Number(id),
-        name
-    })
-    res.json(quizzes)
-})
-
-router.get('/:id', (req, res) => {
-    const id = req.params.id
-    //finds all quizzes where the id matches our id query
-    const quiz = quizzes.find( q => q.id == id)
+    const quiz = await Quiz.findAll()
     res.json(quiz)
 })
 
-router.post('/:id', req, res => {
-    const id = Number(req.params.id)
-    quizzes.map((q) => {
-        if (id === q.id) {
-            q.name = req.body.name
-        }   
-        return q
-    })
-    res.json(quizzes)
+//adds a quiz
+router.post('/', async (req, res) => {
+    const { name } = req.body
+    const quiz = await Quiz.create({ name })
+    res.json(quiz)
 })
 
-router.delete('/:id', req, res => {
-    const id = Number(req.params.id)
-    quizzes = quizzes.filter(q => q.id !== id)
-    res.json(quizzes)
+router.get('/:id', async (req, res) => {
+    //finds all quizzes where the id matches our id query
+    const quiz = await Quiz.findByPk(req.params.id)
+    res.json(quiz)
+})
+
+//updates a quiz
+router.post('/:id', async (req, res) => {
+    const { name } = req.body
+    const { id } = req.params
+    const quiz = await Quiz.update({ name }, {
+        where: { id }
+    })
+    res.json(await Quiz.findByPk(req.params.id))
+})
+
+//deletes a quiz
+router.delete('/:id', async (req, res) => {
+    const { id } = req.params
+    const deleted = await Quiz.destroy({
+        where: { id }
+    })
+    const quiz = await Quiz.findAll()
+    res.json(quiz)
+    res.redirect('/quizzes')
 })
 
 module.exports = router
