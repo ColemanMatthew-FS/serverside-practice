@@ -1,10 +1,13 @@
+//I created a class model using modelgenerate
+//then I associated classes and quizzes by creating a migration (DefineAssociations)
+//then I manually added the classid field to quizzes
+
 'use strict';
 const {
   Model
 } = require('sequelize');
-//method that defines and exports the quiz model
 module.exports = (sequelize, DataTypes) => {
-  class Quiz extends Model {
+  class Class extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -12,17 +15,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      // in this case, each quiz belongs to a class
-      models.Quiz.belongsTo( models.Class )
     }
   }
-  Quiz.init({
-    name: DataTypes.STRING,
-    //Manually added the classid field
-    ClassId: DataTypes.INTEGER
+  Class.init({
+    name: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'Quiz',
+    modelName: 'Class',
   });
-  return Quiz;
+  return Class;
 };
