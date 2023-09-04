@@ -23,7 +23,9 @@ router.post('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     //finds all quizzes where the id matches our id query
     const quiz = await Quiz.findByPk(req.params.id)
-    res.json(quiz)
+    response.render('home', {
+        quiz: quiz
+    })
 })
 
 //updates a quiz
