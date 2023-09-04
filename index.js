@@ -1,11 +1,11 @@
 const express = require('express')
 const app = express()
 //imports the quizzes controller
-const quizzes = require('./controllers/quizzes')
-const { Quiz } = require('./models')
+const quizzes = require('./src/controllers/quizzes')
+const { Quiz } = require('./src/models')
 
 //all our view templates are in the views folder
-app.set('views', __dirname + '/views')
+app.set('views', __dirname + '/src/views')
 app.set('view engine', 'twig')
 
 app.get('/', async (request, response) => {
