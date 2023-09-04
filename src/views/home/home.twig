@@ -1,0 +1,7 @@
+{# //this says to use the default layout for everything outside our main content block #}
+{% extends 'layouts/_default.twig' %}
+
+{# //this says to fill the default layout with this main_content block #}
+{% block main_content %}
+<h1>Howdy {{quiz.name}}</h1>
+{% endblock %}
