@@ -2,13 +2,17 @@ const express = require('express')
 const app = express()
 //imports the quizzes controller
 const quizzes = require('./controllers/quizzes')
+const { Quiz } = require('./models')
 
 //all our view templates are in the views folder
 app.set('views', __dirname + '/views')
 app.set('view engine', 'twig')
 
-app.get('/', (request, response) => {
-    response.render('home')
+app.get('/', async (request, response) => {
+    const quiz = await Quiz.findByPk(1)
+    response.render('home/home', {
+        quiz
+    })
 })
 
 //everything after the : is a parameter called productName
