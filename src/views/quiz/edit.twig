@@ -1,0 +1,10 @@
+{% extends 'layouts/_default.twig' %}
+
+{% block main_content %}
+    <div>
+    {# shows some details for a quiz, and includes a form, with the quiz passed in #}
+        <h1>{{ quiz.name }}</h1>
+        <p>ID: {{ quiz.id }}</p>
+        {% include 'quiz/_form.twig' with { quiz: quiz } %}
+    </div>
+{% endblock %}

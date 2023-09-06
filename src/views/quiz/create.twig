@@ -1,0 +1,6 @@
+{% extends 'layouts/_default.twig' %}
+
+{% block main_content %}
+{# The create page includes the form with no quiz passed in #}
+    {% include 'quiz/_form.twig' with { quiz: false } %}
+{% endblock %}
