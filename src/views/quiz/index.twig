@@ -1,0 +1,15 @@
+{% extends 'layouts/_default.twig' %}
+
+{% block main_content %}
+    <ul>
+    {# Loops through our quizzes, which were passed in from the controller #}
+        {% for quiz in quizzes %}
+            <li>
+                <p>{{quiz.name}}</p>
+                <p><a href="/quizzes/{{ quiz.id }}/edit">Edit</a></p>
+                <p><a href="/quizzes/{{ quiz.id }}/delete">Delete</a></p>
+            </li>
+        {% endfor %}
+    </ul>
+    <p><a href="/quizzes/new">Create new quiz</a></p>
+{% endblock %}
