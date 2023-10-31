@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route exact path='/' element={Home}/>
+        {/* <Route exact path='/' element={Home}/> */}
         <Route path='/reactquizzes' element={ <ReactQuizzes/> }/>
       </Routes>
     </div>

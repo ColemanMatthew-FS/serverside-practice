@@ -22,7 +22,7 @@ class ReactQuizzes extends Component {
           accept: 'application/json',
         },
       })
-      .then(res => console.log(res))
+      .then(res => console.log(res.json()))
       // .then(res => res.json())
       // .then(list => this.setState({ list }))
     }
